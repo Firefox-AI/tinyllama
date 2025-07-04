@@ -26,7 +26,7 @@ $(MODEL_DIR)/tokenizer.model:
 	cp tokenizer.model $(MODEL_DIR)/tokenizer.model
 
 $(GGUF_FILE): $(MODEL_DIR) $(MODEL_DIR)/tokenizer.model $(LLAMA_DIR)
-	cd $(LLAMA_DIR) && $(PYTHON) convert_hf_to_gguf.py ../$(MODEL_DIR) --outfile ../$(GGUF_FILE)
+	$(PYTHON) $(LLAMA_DIR)/convert_hf_to_gguf.py $(MODEL_DIR) --outfile $(GGUF_FILE)
 
 clean:
 	rm -rf $(VENV_DIR) $(LLAMA_DIR) $(MODEL_DIR) $(GGUF_FILE)
